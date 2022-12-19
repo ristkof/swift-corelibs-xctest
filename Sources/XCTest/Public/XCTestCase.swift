@@ -340,6 +340,7 @@ func awaitUsingExpectation(
     let expectation = XCTestExpectation(description: "async test completion")
     let thrownErrorWrapper = ThrownErrorWrapper()
 
+    if #available(iOS 13.0, *) {
     Task {
         defer { expectation.fulfill() }
 
@@ -348,6 +349,9 @@ func awaitUsingExpectation(
         } catch {
             thrownErrorWrapper.error = error
         }
+    }
+     } else {
+        // Fallback on earlier versions
     }
 
     _ = XCTWaiter.wait(for: [expectation], timeout: asyncTestTimeout)
