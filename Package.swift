@@ -1,4 +1,4 @@
-// swift-tools-version:4.0
+// swift-tools-version:5.7
 //
 // To build with auto-linking of the .swiftmodule use:
 // $ swift build -Xswiftc -module-link-name -Xswiftc XCTest
